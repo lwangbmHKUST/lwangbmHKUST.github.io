@@ -96,7 +96,7 @@
             point  : point,
             scale  : scale,
             color  : '#FF0000',
-            radius : 6,
+            radius : 16,
         }
     }
     Seed.prototype = {
@@ -128,9 +128,9 @@
             this.setHeartScale(scale);
         },
         drawHeart: function() {
-            var ctx = this.tree.ctx, cirle = this.cirle1;
-            var point = cirle.point, color = cirle.color,
-                scale = cirle.scale, radius = cirle.radius;
+            var ctx = this.tree.ctx, cirle1 = this.cirle1;
+            var point = cirle1.point, color = cirle1.color,
+                scale = cirle1.scale, radius = 10;
             ctx.save();
             ctx.fillStyle = color;
             ctx.translate(point.x, point.y);
@@ -174,7 +174,7 @@
             ctx.moveTo(0, 0);
             ctx.scale(0.75, 0.75);
             ctx.font = "12px 微软雅黑,Verdana"; // 字号肿么没有用? (ˉ(∞)ˉ)
-            ctx.fillText("Start Here", 23, 10);
+            ctx.fillText("Click Here", 23, 10);
             ctx.restore();
         },
         clear: function() {
