@@ -2,23 +2,26 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style>
+        footer {
+            position: relative;
+            height: 50px;
+            width: 100%;
+            background-color: #ffe;
+        }
+
+        p.copyright {
+            position: absolute;
+            width: 100%;
+            color: #070000;
+            line-height: 40px;
+            font-size: 0.7em;
+            text-align: center;
+            bottom:0;
+        }
+    </style>
     <title>cqc生日快乐!</title>
     <link type="text/css" rel="stylesheet" href="./css/default.css">
-<!--    <script type="text/javascript">-->
-<!--        window.onload = function(){-->
-<!--            setInterval("toggleSound()",1);-->
-<!--        }-->
-
-<!--        function toggleSound() {-->
-<!--            var music = document.getElementById("music");//获取ID-->
-<!--            music.play(); //没有就播放-->
-<!--        }-->
-<!--    </script>-->
-    <script>
-        window.onload = function() {
-            document.getElementById("music").play();
-        }
-    </script>
     <script type="text/javascript" src="./css/jquery.min.js"></script>
     <script type="text/javascript" src="./css/jscex.min.js"></script>
     <script type="text/javascript" src="./css/jscex-parser.js"></script>
@@ -38,10 +41,11 @@
         -->
     </style>
 </head>
+
 <body>
 <!--    <audio id="music" src="music/AndTheWinnerIs.mp3" autoplay preload="auto" loop="loop">该浏览器不支持audio属性</audio>-->
 
-<audio id="music" autoplay controls loop preload>
+<audio id="music" autoplay loop preload>
     <source src="music/Sonnet.mp3" />
 </audio>
 <div id="main">
@@ -49,9 +53,7 @@
         <div id="text">
             <div id="code">
                 <font color="#FF9000">
-                    <!--<span class="say"><h1>我希望有个如你一般的人。</h1></span><br><br>-->
                     <span class="say">Shall I compare thee to a summer's day?</span><br> <br>
-
                     <span class="say">Thou art more lovely and more temperate:</span><br><br>
                     <span class="say">Rough winds do shake the darling buds of May,</span><br><br>
                     <span class="say">And summer's lease hath all too short a date;</span><br><br>
@@ -75,16 +77,20 @@
                 </font>
             </div>
         </div>
-        <div id="clock-box">
+<!--        <div id="clock-box">-->
             <!-- <span class="STYLE1"></span><font color="#33CC00">距离我喜欢你，</font>
-<span class="STYLE1">已经是……</span> -->
-            <span class="STYLE1"></span>
-            <font color="#33CC00"></font>
-            <span class="STYLE1"></span>
+<!--<span class="STYLE1">已经是……</span> &ndash;&gt;-->
+<!--            <span class="STYLE1"></span>-->
+<!--            <font color="#33CC00"></font>-->
+<!--            <span class="STYLE1"></span>-->
             <!-- <div id="clock"></div> -->
-        </div>
+<!--        </div>-->
         <canvas id="canvas" width="1100" height="680"></canvas>
     </div>
+
+    <footer>
+        <p class="copyright">© Created by Derek W. Jan 13, 2023</p>
+    </footer>
 
 </div>
 
@@ -145,13 +151,16 @@
         var tree = new Tree(canvas[0], width, height, opts);
         var seed = tree.seed;
         var foot = tree.footer;
-        var hold = 0;
+        var hold = 1;
 
         canvas.click(function (e) {
+
             var offset = canvas.offset(), x, y;
             x = e.pageX - offset.left;
             y = e.pageY - offset.top;
             if (seed.hover(x, y)) {
+                setTimeout(function() { document.getElementById("music").play(); }, 5000)
+                // document.getElementById("music").play();
                 hold = 0;
                 canvas.unbind("click");
                 canvas.unbind("mousemove");
@@ -227,7 +236,6 @@
             together.setMinutes(53);          //分钟
             together.setSeconds(0);         //秒前一位
             together.setMilliseconds(2);        //秒第二位
-
             $("#code").show().typewriter();
             $("#clock-box").fadeIn(500);
             while (true) {
@@ -251,8 +259,10 @@
     })();
 </script>
 
+
 </body>
 
+<!-- Made with love by Vinit Shahdeo -->
 <script type="text/javascript" src="timer.js"></script>
 
 </html>
