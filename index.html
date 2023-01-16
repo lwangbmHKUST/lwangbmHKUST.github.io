@@ -48,6 +48,7 @@
 <audio id="music" autoplay loop preload controls>
     <source src="music/Sonnet.mp3" />
 </audio>
+
 <div id="main">
     <div id="wrap">
         <div id="text">
@@ -95,6 +96,7 @@
 </div>
 
 <script>
+
 </script>
 
 
@@ -151,7 +153,7 @@
         var tree = new Tree(canvas[0], width, height, opts);
         var seed = tree.seed;
         var foot = tree.footer;
-        var hold = 1;
+        var hold = 0;
 
         canvas.click(function (e) {
 
@@ -159,7 +161,7 @@
             x = e.pageX - offset.left;
             y = e.pageY - offset.top;
             if (seed.hover(x, y)) {
-                setTimeout(function() { document.getElementById("music").play(); }, 5000)
+                // setTimeout(function() { document.getElementById("music").play(); }, 5000)
                 // document.getElementById("music").play();
                 hold = 0;
                 canvas.unbind("click");
